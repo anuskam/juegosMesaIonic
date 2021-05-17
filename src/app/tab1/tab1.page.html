@@ -1,8 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Modificación tab1
-    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item>
+      <ion-label>Dark theme</ion-label>
+      <ion-toggle slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -10,8 +16,15 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
+      <ion-toggle></ion-toggle>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-explore-container name="Tab 1 page">
+    Hola estoy escribiendo
+    <!-- <ion-item>
+      <ion-label>Dark theme</ion-label>
+      <ion-toggle slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
+    </ion-item> -->
+  </app-explore-container>
 </ion-content>
