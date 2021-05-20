@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 export class ApiService {
   baseUrl: string;
   key: string
-  constructor(private httpClient: HttpClientModule) {
-    this.key= 'QyW5Bpn96a';
-    this.baseUrl = `https://api.boardgameatlas.com/api/search?order_by=popularity&ascending=false&client_id=${this.key}`
+  constructor(private http: HttpClient) {
+    this.key= '&client_id=QyW5Bpn96a';
+    this.baseUrl = 'https://api.boardgameatlas.com/api/search?'
+  }
+
+  getData(): Promise<any[]>{
+    return this.http.get<any[]>(this.baseUrl + this.key).toPromise();
+  }
+
+  getGameByName(name: string): Promise<any[]>{
+    return this.http.get<any[]>(this.baseUrl + 'name='+ name + this.key).toPromise();
   }
 
 }
