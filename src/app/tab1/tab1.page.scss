@@ -1,0 +1,41 @@
+.main-content {
+  font-family: 'Recursive', sans-serif;
+}
+
+.title, .players {
+  vertical-align: text-top;
+}
+
+.title {
+  font-weight: bold;
+  display: block;
+}
+
+.players, .time {
+  font-size: 12px;
+}
+
+.players {
+  margin-top: 5px;
+}
+
+.time {
+  margin-top: 3px;
+}
+
+.clock {
+  margin-left: 50px;
+}
+
+
+.information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.gameImage {
+  object-fit: contain;
+}
+

@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
 export class ApiService {
   baseUrl: string;
   key: string
+  params: string;
   constructor(private http: HttpClient) {
     this.key= '&client_id=QyW5Bpn96a';
-    this.baseUrl = 'https://api.boardgameatlas.com/api/search?'
+    this.baseUrl = 'https://api.boardgameatlas.com/api/search?';
+    this.params = '&limit=30';
   }
 
   getData(): Promise<any[]>{
@@ -18,7 +20,11 @@ export class ApiService {
   }
 
   getGameByName(name: string): Promise<any[]>{
-    return this.http.get<any[]>(this.baseUrl + 'name='+ name + this.key).toPromise();
+    return this.http.get<any[]>(this.baseUrl + 'name='+ name + this.key + this.params).toPromise();
+  }
+
+  getDetails(id): Promise<any[]> {
+    return this.http.get<any[]>(this.baseUrl + 'ids=' + id + this.key).toPromise();
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,7 @@ export class Tab1Page implements OnInit {
   searchWord: string
   searchResults: any
 
-  constructor(private apiInfo: ApiService) {
+  constructor(private apiInfo: ApiService, private router:Router) {
   }
 
   async ngOnInit(){
@@ -36,6 +37,11 @@ export class Tab1Page implements OnInit {
       } catch(error){
         console.log(error);
       }
+  }
+
+
+  openGameDetails(name: string) {
+    this.router.navigate(['detail', name]);
   }
 
 
