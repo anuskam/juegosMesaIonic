@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  favoritos: any[];
+  constructor(private list: ListService, private router:Router) {
+    this.favoritos= this.list.getFavoritos();
+  }
 
-  constructor() {}
+
+  openGameDetails(name: string) {
+    this.router.navigate(['detail', name]);
+  }
 
 }
