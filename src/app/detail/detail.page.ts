@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'app-detail',
@@ -10,9 +11,12 @@ import { ApiService } from '../api.service';
 export class DetailPage implements OnInit {
 
   information: any;
+  favoritos: any;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private apiInfo: ApiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private apiInfo: ApiService, private list: ListService) {
+    this.favoritos= this.list.getFavoritos();
+  }
 
 
   async ngOnInit(){
@@ -38,11 +42,11 @@ export class DetailPage implements OnInit {
 
   }
 
-
-
-  openWebsite() {
-    window.open(this.information.Website, '_blank');
+  addGame(){
+    this.list.addFavorito(this.information);
   }
+
+
 
 
 
