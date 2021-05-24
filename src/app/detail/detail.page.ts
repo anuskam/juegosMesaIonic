@@ -22,11 +22,9 @@ export class DetailPage implements OnInit {
   async getDetails() {
     try {
       let id = this.activatedRoute.snapshot.paramMap.get('id');
+      this.information= await this.apiInfo.getDetails(id);
+      this.information= this.information.games[0];
 
-      this.apiInfo.getDetails(id).then(result => {
-        console.log('details: ', result);
-        this.information = result;
-      })
       console.log(this.information);
       // this.gameid = this.activatedRoute.snapshot.paramMap.get('id');
       // this.apiInfo.getDetails(this.gameid).subscribe(res => {
@@ -35,6 +33,8 @@ export class DetailPage implements OnInit {
     } catch(error){
       console.log(error);
     }
+
+    console.log(this.information);
 
   }
 
