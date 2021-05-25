@@ -14,7 +14,7 @@
      </ion-card-title>
    </ion-card-header>
 
-   <button *ngIf="favoritos == undefined || !(favoritos.includes(information))" (click)="addGame()" ion-button icon-start>
+   <button [disabled]="esFavorito > -1" (click)="addGame()" ion-button icon-start>
     <ion-icon name="list-outline"></ion-icon>
     Añadir a mi lista
   </button>

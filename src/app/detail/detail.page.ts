@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ListService } from '../list.service';
@@ -12,6 +12,7 @@ export class DetailPage implements OnInit {
 
   information: any;
   favoritos: any;
+  esFavorito: number;
 
 
   constructor(private activatedRoute: ActivatedRoute, private apiInfo: ApiService, private list: ListService) {
@@ -19,8 +20,10 @@ export class DetailPage implements OnInit {
   }
 
 
+
   async ngOnInit(){
     this.getDetails();
+    console.log(this.favoritos);
   }
 
   async getDetails() {
@@ -28,8 +31,10 @@ export class DetailPage implements OnInit {
       let id = this.activatedRoute.snapshot.paramMap.get('id');
       this.information= await this.apiInfo.getDetails(id);
       this.information= this.information.games[0];
+      this.esFavorito=this.favoritos.findIndex(element => element.id == this.information.id);
 
       console.log(this.information);
+      console.log(this.esFavorito);
       // this.gameid = this.activatedRoute.snapshot.paramMap.get('id');
       // this.apiInfo.getDetails(this.gameid).subscribe(res => {
       //   this.games = res;
@@ -44,6 +49,7 @@ export class DetailPage implements OnInit {
 
   addGame(){
     this.list.addFavorito(this.information);
+    this.esFavorito = 0;
   }
 
 
