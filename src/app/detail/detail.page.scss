@@ -3,7 +3,7 @@ ion-title {
 }
 
 .addButton {
-  background: #80475E;
+  background-color: #80475E;
   color: white;
   padding: 10px;
   border: 1px solid #80475E;
@@ -13,4 +13,11 @@ ion-title {
 
 img {
   max-height: 450px;
+}
+
+.addButton2 {
+  padding: 10px;
+  border: 1px solid #80475E;
+  background-color: #80475E;
+  border-radius: 8px;
 }
