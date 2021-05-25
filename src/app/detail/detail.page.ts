@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ListService } from '../list.service';
+import { IonSlides, IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',
@@ -12,7 +13,9 @@ export class DetailPage implements OnInit {
 
   information: any;
   favoritos: any;
-
+  segment = 0;
+  @ViewChild('slides') slider: IonSlides;
+  @ViewChild(IonContent) content: IonContent;
 
   constructor(private activatedRoute: ActivatedRoute, private apiInfo: ApiService, private list: ListService) {
     this.favoritos= this.list.getFavoritos();
@@ -44,6 +47,19 @@ export class DetailPage implements OnInit {
 
   addGame(){
     this.list.addFavorito(this.information);
+  }
+
+  async segmentChanged() {
+    await this.slider.slideTo(this.segment);
+  }
+
+  async slideChanged() {
+    this.segment = await this.slider.getActiveIndex();
+    this.goTop()
+  }
+
+  goTop() {
+    this.content.scrollToTop(500)
   }
 
 

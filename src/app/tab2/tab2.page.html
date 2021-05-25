@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Favourites
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item  *ngFor="let game of favoritos"  (click)="openGameDetails(game.id)" lines="full">
+  <ion-item *ngFor="let game of favoritos"  (click)="openGameDetails(game.id)" lines="full">
     <ion-thumbnail slot="start">
       <ion-img class="gameImage" [src]="game.image_url"></ion-img>
     </ion-thumbnail>

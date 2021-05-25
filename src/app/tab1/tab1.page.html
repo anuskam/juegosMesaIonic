@@ -1,22 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
-    </ion-buttons> -->
-    <ion-title>Games</ion-title>
-
+  <ion-toolbar color="secondary">
+    <ion-title>Board Games</ion-title>
   </ion-toolbar>
-  <!-- <ion-toolbar>
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-item>
-      <ion-label>Dark theme</ion-label>
-      <ion-toggle slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
-    </ion-item>
-  </ion-toolbar> -->
 </ion-header>
 
 <ion-content class="main-content">
@@ -25,7 +10,7 @@
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>
-        Modo oscuro
+        Dark mode
       </ion-label>
       <ion-toggle id="themeToggle" slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
     </ion-item>
@@ -48,9 +33,7 @@
             &nbsp; {{ game.min_playtime }} - {{ game.max_playtime }}
           </span>
         </div>
-
       </ion-label>
-
     </ion-item>
   </ion-list>
 </ion-content>
