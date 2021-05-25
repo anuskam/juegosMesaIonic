@@ -9,8 +9,10 @@ import { ListService } from '../list.service';
 })
 export class Tab2Page {
   favoritos: any[];
+
   constructor(private list: ListService, private router:Router) {
     this.favoritos= this.list.getFavoritos();
+
   }
 
 

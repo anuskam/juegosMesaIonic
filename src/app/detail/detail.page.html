@@ -3,20 +3,69 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <div *ngIf="information">
+      <ion-title>{{ information.name }}</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- <ion-card *ngIf="information">
-   <ion-card-header>
-     <ion-card-title>
-       {{ information.name }}
-     </ion-card-title>
-   </ion-card-header>
+<ion-content *ngIf="information">
+  <div>
+    <ion-card>
+      <ion-card-content class="ion-text-center">
+        <img src="{{ information.image_url }}" alt="{{ information.name }}">
+        <!-- <ion-card-title>{{ information.name }}</ion-card-title> -->
+        <button [disabled]="esFavorito > -1" (click)="addGame()" ion-button icon-start class="addButton">
+          <ion-icon name="add-circle-outline"></ion-icon>
+          Add to favourites
+        </button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-   <button [disabled]="esFavorito > -1" (click)="addGame()" ion-button icon-start>
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" pager="false">
+    <ion-slide>
+      <ion-card>
+        <ion-card-content class="ion-text-center">
+          <ion-card-title>Description</ion-card-title>
+          <div innerHTML="{{information.description}}"></div>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-content class="ion-text-center">
+          <ion-card-title>Information</ion-card-title>
+          <div class="information">
+            <p *ngIf="information">Publisher: {{ information.primary_publisher.name }}</p>
+            <p *ngIf="information">Year published: {{ information.year_published }}</p>
+            <p>Players: {{ information.min_players }} - {{ information.max_players }}</p>
+            <p>Time: {{ information.min_playtime }} - {{ information.max_playtime }}</p>
+            <p>Type: {{ information.type }}</p>
+            <p *ngIf="information">Minimum age: {{ information.min_age }}</p>
+            <p>More info: {{ information.url }}</p>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+   <!-- <button [disabled]="esFavorito > -1" (click)="addGame()" ion-button icon-start>
     <ion-icon name="list-outline"></ion-icon>
     Añadir a mi lista
-  </button>
- </ion-card>
+  </button> -->
+ <!-- </ion-card> -->
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="dark">
+      <ion-segment-button value="0">
+        <ion-label>Description</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>Information</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
