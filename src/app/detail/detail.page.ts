@@ -52,9 +52,4 @@ export class DetailPage implements OnInit {
     this.esFavorito = 0;
   }
 
-
-
-
-
-
 }

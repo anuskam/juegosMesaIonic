@@ -40,10 +40,10 @@ export class Tab1Page implements OnInit {
   }
 
 
+
   openGameDetails(name: string) {
     this.router.navigate(['detail', name]);
   }
-
 
   toggleTheme(event){
     if(event.detail.checked){
