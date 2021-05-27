@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>
-      Tab 2
+      Favourites
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item  *ngFor="let game of favoritos"  (click)="openGameDetails(game.id)" lines="full">
+  <ion-item *ngFor="let game of favoritos"  (click)="openGameDetails(game.id)" lines="full">
     <ion-thumbnail slot="start">
       <ion-img class="gameImage" [src]="game.image_url"></ion-img>
     </ion-thumbnail>
@@ -22,14 +22,13 @@
       <div class="information">
         <ion-icon name="people-outline"></ion-icon>
         <p class="players">
-          {{ game.min_players }} - {{ game.max_players }}
+          &nbsp; {{ game.min_players }} - {{ game.max_players }}
         </p>
         <ion-icon class="clock" name="alarm-outline"></ion-icon>
         <span class="time">
-          {{ game.min_playtime }} - {{ game.max_playtime }}
+          &nbsp; {{ game.min_playtime }} - {{ game.max_playtime }}
         </span>
       </div>
-
     </ion-label>
   </ion-item>
 </ion-content>
