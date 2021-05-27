@@ -8,6 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
+  allGames: any;
   games: any;
   searchWord: string
   searchResults: any
@@ -34,16 +35,21 @@ export class Tab1Page implements OnInit {
     try{
       this.games = await this.apiInfo.getData();
       this.games = this.games.games;
+      this.allGames= this.games;
       } catch(error){
         console.log(error);
       }
   }
 
+  changeGames(){
+    this.games= this.allGames;
+  }
 
 
   openGameDetails(name: string) {
     this.router.navigate(['detail', name]);
   }
+
 
   toggleTheme(event){
     if(event.detail.checked){

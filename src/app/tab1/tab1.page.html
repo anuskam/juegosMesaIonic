@@ -15,7 +15,7 @@
       <ion-toggle id="themeToggle" slot="end" (ionChange)='toggleTheme($event)'></ion-toggle>
     </ion-item>
     <!-- Buscador -->
-    <ion-searchbar animated [(ngModel)]="searchWord" (ionCancel)="getGames()" (change)="onChangeSearch($event)"></ion-searchbar>
+    <ion-searchbar animated [(ngModel)]="searchWord" (click)="changeGames()" (change)="onChangeSearch($event)"></ion-searchbar>
     <!-- Juegos -->
     <ion-item *ngFor="let game of games" (click)="openGameDetails(game.id)" lines="full">
       <ion-thumbnail slot="start">
